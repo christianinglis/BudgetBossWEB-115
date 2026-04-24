@@ -48,3 +48,34 @@ Phase 3:
     - Local Storage & API Integration
 Phase 4:
     - Final Bug Squashing & CSS Polish
+
+# Technical Requirements Mapping
+Classes & Subclasses (The Blueprint)
+The app will use a hierarchical class structure to model financial entities:
+
+- Transaction: The parent class handling core data (ID, name, amount).
+
+- Income & Expense: Subclasses using extends and super().
+
+- Expense will include a severity property to determine how much "damage" it deals to the base.
+
+- App: A controller class to manage the collection of transactions and handle UI updates.
+
+# If Statements & Loops (The Engine)
+- Loops: A render() method will loop through the transaction array to dynamically generate the history list.
+
+- Logic: if statements will check the User.balance after every entry. If the balance drops below zero, a DOM class (e.g., .critical-state) will be applied to the UI to trigger a red screen shake or "Base Damaged" animation.
+
+# Event Listeners (The Interaction)
+- Form Submission: A 'submit' listener on the transaction form to prevent default behavior, capture input values, and trigger the logic flow.
+
+- Currency Toggle: A 'change' listener on a dropdown menu that triggers the Fetch API logic to convert all displayed values.
+
+- Delete Buttons: Using event delegation or direct listeners on dynamically created buttons to remove specific transactions.
+
+# DOM Element Creation (The Visuals)
+The app will not have hard-coded HTML for the transaction list. Instead:
+
+- Dynamic Generation: When a new transaction is added, the script will use document.createElement('div') to build a "Transaction Card."
+
+- Assembly: It will use .appendChild() to nest the name, amount, and delete button within the card before injecting it into the main dashboard container.
