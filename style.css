@@ -1,3 +1,9 @@
+body {
+  background-color: lightblue;
+}
+
 h1 {
     text-align: center;
+    color: black;
+    font: 50px Arial, Helvetica, sans-serif;
 }
