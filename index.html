@@ -5,11 +5,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Budget Boss</title>
+    <title>Budget Boss | Command Center</title>
 </head>
 <body>
-    <h1>Budget Boss</h1>
-    <h1 style="font-size: 14px;">Christian Inglis</h1>
-    
+    <div class="app-container">
+        <header class="command-center">
+            <h1>BUDGET BOSS</h1>
+            <div id="base-visual" class=""status-nominal>
+                <div class="glitch-text">SYSTEMS NOMINAL</div>
+                <h2 id="total-balance">$0.00</h2>
+            </div>
+        </header>
+        
+        <main>
+            <section class="action-panel">
+                <h3>Log Transaction</h3>
+                <form id="transaction-form">
+                    <input type="text" id="name" placeholder="Item Name" required>
+                    <input type="number" id="amount" placeholder="Amount" step="0.01" required>
+
+                    <select id="type">
+                        <option value="income">Income (Heal)</option>
+                        <option value="expense">Expense (Damage)</option>
+                    </select>
+
+                    <select id="category" class="hidden">
+                        <option value="rent">Rent</option>
+                        <option value="food">Food</option>
+                        <option value="hobbies">Hobbies</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <button type="submit" id="submit-btn">DEPLOY</button>
+                </form>
+            </section>
+
+            <section class="log-section">
+                <h3>Mission Log</h3>
+                <div id="transaction-log"></div>
+            </section>
+        </main>
+    </div>
 </body>
 </html>
