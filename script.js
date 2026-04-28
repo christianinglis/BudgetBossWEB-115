@@ -67,3 +67,25 @@ typeSelect.addEventListener('change', () => {
     catSelect.classList.toggle('hidden', typeSelect.value === 'income');
 });
 
+// Handle form submission
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const amount = document.getElementById('amount').value;
+    const type = typeSelect.value;
+
+    let entry;
+    if (type === 'income') {
+        entry = new Income(name, amount);
+    } else {
+        entry = new Expense(name, amount, catSelect.value);
+    }
+
+    boss.addTransaction(entry);
+    renderUI();
+    form.reset();
+    catSelect.classList.add('hidden');
+});
+
+// Render UI
