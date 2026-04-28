@@ -105,6 +105,24 @@ function renderUI() {
         statusText.innerText = 'SHIELDS LOW';
     } else {
         visualEl.className = 'status-nominal';
-        statusText.innerText = 'SYSTEM OPERATIONAL';
+        statusText.innerText = 'SYSTEMS NOMINAL';
     }
+
+    // Loop throough the transactions to build the log
+    logContainer.innerHTML = '';
+    boss.transactions.forEach(t => {
+        const div = document.createElement('div');
+        div.className = 'transaction-card ${t.type}';
+        div.innerHTML = `
+            <div>
+                <strong>${t.name}</strong> <br>
+                <small>${t.category || 'Revenue'}</small>
+            </div>
+            <div>
+                <span>${t.type === 'income' ? '+' : '-'}$${t.amount.toFixed(2)}</span>
+                <button onclick="deleteEntry(${t.id})" style="width: auto; margin-left; 10px; display: inline;">X</button>
+            </div>
+        `;
+        logContainer.appendChild(div);
+    });
 }
