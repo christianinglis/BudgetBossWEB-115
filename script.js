@@ -54,3 +54,10 @@ class BudgetBoss {
         localStorage.setItem('transactions', JSON.stringify(this.transactions));
     }
 }
+
+// App Initialization
+const boss =  new BudgetBoss();
+const form = document.getElementById('transaction-form');
+const typeSelect = document.getElementById('type');
+const catSelect = document.getElementById('category');
+const logContainer = document.getElementById('transaction-log');
