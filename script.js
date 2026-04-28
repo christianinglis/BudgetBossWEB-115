@@ -61,3 +61,9 @@ const form = document.getElementById('transaction-form');
 const typeSelect = document.getElementById('type');
 const catSelect = document.getElementById('category');
 const logContainer = document.getElementById('transaction-log');
+
+// Category visibility
+typeSelect.addEventListener('change', () => {
+    catSelect.classList.toggle('hidden', typeSelect.value === 'income');
+});
+
