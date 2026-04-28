@@ -45,7 +45,7 @@ class BudgetBoss {
     }
 
     updateBalance() {
-        this.balance = this.transactions.reduce((acc, t) => {
+        this.balance = this.transactions.reduce((acc, curr) => {
             return curr.type === 'income' ? acc + curr.amount : acc - curr.amount;
         }, 0);
     }
