@@ -94,12 +94,12 @@ function renderUI() {
     const visualEl = document.getElementById('base-visual');
     const statusText = document.getElementById('.glitch-text');
 
-    balanceEl.innerText = '$${boss.balance.toFixed(2)}';
+    balanceEl.innerText = `$${boss.balance.toFixed(2)}`;
 
     //Logic for gamified status
     if (boss.balance < 0) {
         visualEl.className = 'status-critical';
-        statusText.innerText = 'CRITICAL FAILURE';
+        statusText.innerText = "CRITICAL FAILURE";
     } else if (boss.balance < 200) {
         visualEl.className = 'status-warning';
         statusText.innerText = 'SHIELDS LOW';
@@ -125,4 +125,13 @@ function renderUI() {
         `;
         logContainer.appendChild(div);
     });
+
+    // Global Delete Function
+    window.deleteEntry = (id) => {
+        boss.deleteTransaction(id);
+        renderUI();
+    };
+
+    // Initial load
+    renderUI();
 }
