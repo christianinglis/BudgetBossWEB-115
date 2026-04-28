@@ -16,7 +16,7 @@ class Income extends Transaction {
 }
 
 class Expense extends Transaction {
-    constructor(name, amount) {
+    constructor(name, amount, category) {
         super(name, amount);
         this.type = 'expense';
         this.category = category;
@@ -92,7 +92,7 @@ form.addEventListener('submit', (e) => {
 function renderUI() {
     const balanceEl = document.getElementById('total-balance');
     const visualEl = document.getElementById('base-visual');
-    const statusText = document.getElementById('.glitch-text');
+    const statusText = visualEl.querySelector('.glitch-text');
 
     balanceEl.innerText = `$${boss.balance.toFixed(2)}`;
 
@@ -102,17 +102,17 @@ function renderUI() {
         statusText.innerText = "CRITICAL FAILURE";
     } else if (boss.balance < 200) {
         visualEl.className = 'status-warning';
-        statusText.innerText = 'SHIELDS LOW';
+        statusText.innerText = "SHIELDS LOW";
     } else {
         visualEl.className = 'status-nominal';
-        statusText.innerText = 'SYSTEMS NOMINAL';
+        statusText.innerText = "SYSTEMS NOMINAL";
     }
 
-    // Loop throough the transactions to build the log
+    // Loop through the transactions to build the log
     logContainer.innerHTML = '';
     boss.transactions.forEach(t => {
         const div = document.createElement('div');
-        div.className = 'transaction-card ${t.type}';
+        div.className = `transaction-card ${t.type}`;
         div.innerHTML = `
             <div>
                 <strong>${t.name}</strong> <br>
@@ -120,18 +120,18 @@ function renderUI() {
             </div>
             <div>
                 <span>${t.type === 'income' ? '+' : '-'}$${t.amount.toFixed(2)}</span>
-                <button onclick="deleteEntry(${t.id})" style="width: auto; margin-left; 10px; display: inline;">X</button>
+                <button onclick="deleteEntry(${t.id})" style="width: auto; margin-left: 10px; display: inline;">X</button>
             </div>
         `;
         logContainer.appendChild(div);
     });
-
-    // Global Delete Function
-    window.deleteEntry = (id) => {
-        boss.deleteTransaction(id);
-        renderUI();
-    };
-
-    // Initial load
-    renderUI();
 }
+
+// Global Delete Function
+window.deleteEntry = (id) => {
+    boss.deleteTransaction(id);
+    renderUI();
+};
+
+// Initial load
+renderUI();

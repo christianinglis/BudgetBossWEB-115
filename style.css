@@ -1,9 +1,20 @@
-body {
-  background-color: lightblue;
+:root {
+  --bg: #0d0d0d;
+  --primary: #00ff41;
+  --warning: #f39c12;
+  --critical: #ff3e3e;
+  --text: #ffffff;
 }
 
-h1 {
-    text-align: center;
-    color: black;
-    font: 50px Arial, Helvetica, sans-serif;
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Courier New', Courier, monospace;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.app-container {
+  width: 100%;
 }
