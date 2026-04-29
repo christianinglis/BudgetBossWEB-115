@@ -64,3 +64,16 @@ button {
 }
 
 .hidden { display: none;}
+
+/* Log Cards */
+.transaction-card {
+  background: #1a1a1a;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-left: 5px solid white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.income { border-left-color: var(--primary);}
+.expense { border-left-color: var(--critical); }
