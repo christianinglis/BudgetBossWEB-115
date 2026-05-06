@@ -37,8 +37,6 @@ The lofic will be driven by an Object-Oriented approach:
 # Planned Extentions (DLC)
 - Local Storage: Implement localStorage to ensure that data persists. When the user returns to the app, the User class will hydrate its state from the saved JSON.
 
-- Fetch API (Currency Conversation): Integrater a third-party API (ex: ExchangeRate-API) to allow users to toggle their budget view between USD, EUR, and JPY.
-
 # Timeline
 Phase 1:
     - Logic Layer (Classes, Math, Console Testing)
